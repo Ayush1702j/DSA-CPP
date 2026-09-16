@@ -1,0 +1,59 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+        vector<int> ans;
+        vector<int> crr;
+
+        ListNode* temp = l1;
+
+        while(temp != NULL) {
+            ans.push_back(temp->val);
+            temp = temp->next;
+        }
+
+        temp = l2;
+
+        while(temp != NULL) {
+            crr.push_back(temp->val);
+            temp = temp->next;
+        }
+
+        vector<int> arr;
+
+        int i = ans.size() - 1;
+        int j = crr.size() - 1;
+        int carr = 0;
+
+        while(i >= 0 || j >= 0 || carr != 0) {
+
+            int sum = carr;
+
+            if(i >= 0) {
+                sum += ans[i];
+                i--;
+            }
+
+            if(j >= 0) {
+                sum += crr[j];
+                j--;
+            }
+
+            arr.push_back(sum % 10);
+
+            carr = sum / 10;
+        }
+
+        reverse(arr.begin(), arr.end());
+
+        ListNode* head = new ListNode(arr[0]);
+        temp = head;
+
+        for(int i = 1; i < arr.size(); i++) {
+            temp->next = new ListNode(arr[i]);
+            temp = temp->next;
+        }
+
+        return head;
+    }
+};
