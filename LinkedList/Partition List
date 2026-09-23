@@ -1,0 +1,46 @@
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        vector < int > ans ;
+        ListNode * temp = head ;
+        
+        while ( temp != NULL ){
+            ans.push_back( temp -> val );
+            temp = temp -> next ;
+        }
+
+        vector < int > arr ;
+        vector < int > arry ;
+
+        for ( auto a : ans){
+            if ( a < x ){
+                arr.push_back(a);
+            }
+            else{
+                arry.push_back(a);
+            }
+        }
+
+        vector < int > result ;
+
+        for ( int i = 0 ; i < arr.size() ; i++){
+            result.push_back( arr[i] );
+        }
+        for ( int i = 0 ; i < arry.size() ; i++){
+            result.push_back( arry[i]);
+        }
+
+        if ( result.empty()) return NULL ;
+
+        ListNode * newhead = new ListNode (result[0]);
+        temp = newhead ;
+
+        for ( int i = 1 ; i < result.size() ; i++){
+            temp -> next = new ListNode (result[i]);
+            temp = temp -> next ;
+        }
+
+        return newhead ;
+        
+    }
+};
