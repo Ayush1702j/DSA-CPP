@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findPoisonedDuration(vector<int>& timeSeries, int duration) {
+        vector < int > ans ;
+        unordered_map < int , int > mp ;
+        int count = 0 ;
+        for ( int i = 0 ; i < timeSeries.size() - 1 ; i++ ){
+            
+            int a = timeSeries[i] ;
+            int b = timeSeries[i+1] ;
+
+            count += min( duration ,b - a );
+        }
+
+        count += duration ;
+
+        return count ;
+
+        
+    }
+};
