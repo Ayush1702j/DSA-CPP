@@ -1,0 +1,25 @@
+class Solution {
+public:
+
+    void solve ( vector < int > & nums , int st , vector < int > & arr , vector < vector < int >> & ans ){
+
+        ans.push_back( arr );
+
+        for ( int i = st ; i < nums.size(); i++){
+            if ( i > st && nums[i] == nums[i-1]){
+                continue;
+            }
+            arr.push_back(nums[i]);
+            solve( nums , i + 1 , arr , ans);
+            arr.pop_back();
+        } 
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort( nums.begin(), nums.end());
+        int st ;
+        vector < int > arr ;
+        vector < vector <int >> ans ;
+        solve ( nums , 0 , arr , ans );
+        return ans ;
+    }
+};
