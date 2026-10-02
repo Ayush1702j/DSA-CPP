@@ -1,0 +1,80 @@
+class Solution {
+public:
+    ListNode *  reverse ( ListNode * head ){
+        ListNode * curr = head ;
+        ListNode * prev = NULL ;
+        ListNode * next = NULL ;
+
+        while ( curr != NULL){
+            next = curr -> next ;
+            curr -> next = prev ;
+            prev = curr ;
+            curr = next ;
+        }
+
+        return prev ;
+    }
+    ListNode* reverseEvenLengthGroups(ListNode* head) {
+
+        int groupSize = 1;
+
+        ListNode* temp = head;
+        ListNode* prevGroup = NULL;
+
+        while (temp != NULL) {
+
+            int count = 0;
+            ListNode* curr = temp;
+
+            while (curr != NULL && count < groupSize) {
+                count++;
+                curr = curr->next;
+            }
+
+            ListNode* nextGroup = curr;
+
+            temp = temp;
+            ListNode* last = temp;
+
+            for (int i = 1; i < count; i++) {
+                last = last->next;
+            }
+
+            last->next = NULL;
+
+            
+            if (count % 2 == 0) {
+
+                ListNode* groupStart = temp;
+
+                ListNode* reversedHead = reverse(temp);
+
+                if (prevGroup != NULL) {
+                    prevGroup->next = reversedHead;
+                }
+                else {
+                    head = reversedHead;
+                }
+
+                groupStart->next = nextGroup;
+                prevGroup = groupStart;
+            }
+            else {
+
+                
+                if (prevGroup != NULL) {
+                    prevGroup->next = temp;
+                }
+
+                prevGroup = last;
+                prevGroup->next = nextGroup;
+            }
+
+            
+            temp = nextGroup;
+            groupSize++;
+        }
+
+        return head;
+    }
+};
