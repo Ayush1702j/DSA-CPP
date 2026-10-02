@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int numComponents(ListNode* head, vector<int>& nums) {
+        unordered_set < int > s ;
+
+        for ( auto x : nums ){
+            s.insert(x);
+        }
+
+        int ans = 0 ;
+        ListNode * temp = head ;
+
+        while ( temp != NULL ){
+            if( s.count(temp -> val)){
+                if (temp->next == NULL || !s.count(temp->next->val)) {
+                    ans++;
+                }
+            }
+            temp = temp -> next ;
+        }
+        return ans ;
+    }
+};
