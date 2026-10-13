@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minimumCost(vector<int>& cost) {
+        sort ( cost.begin() , cost.end() , greater< int > ());
+
+        int sum = 0 ;
+        for ( auto x : cost ){
+            sum += x ;
+        }
+
+        for ( int i = 2 ; i < cost.size() ; i+= 3 ){
+            sum = sum - cost[i];
+        }
+        return sum ;
+
+    }
+};
