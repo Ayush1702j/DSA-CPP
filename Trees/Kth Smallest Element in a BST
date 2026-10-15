@@ -1,0 +1,18 @@
+class Solution {
+public:
+    TreeNode * inorder( TreeNode * root , vector < int > & ans ){
+        if ( root == NULL) return NULL ;
+
+        root -> left = inorder ( root -> left , ans);
+        ans.push_back(root -> val);
+        root -> right = inorder( root -> right , ans);
+
+        return root ;
+
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        vector < int > ans ;
+        inorder( root , ans);
+        return ans[k -1 ];
+    }
+};
