@@ -1,0 +1,31 @@
+class Solution {
+public:
+    TreeNode * s (vector < int >& ans , int left , int right ){
+        if ( left > right ){
+            return NULL;
+        }
+
+        int mid =left + ( right - left )/ 2;
+
+        TreeNode * root = new TreeNode ( ans[mid]);
+
+        root -> left = s ( ans , left , mid -1);
+        root -> right = s( ans , mid +1 , right);
+
+        return root ;
+    }
+    
+    TreeNode* sortedListToBST(ListNode* head) {
+        vector < int > ans ;
+
+        ListNode * temp = head ;
+
+        while ( temp != NULL){
+            ans.push_back( temp -> val);
+            temp = temp -> next ;
+        }
+
+        return s(ans , 0 , ans.size() -1) ;
+
+    }
+};
