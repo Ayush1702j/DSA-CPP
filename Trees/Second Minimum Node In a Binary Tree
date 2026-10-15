@@ -1,0 +1,26 @@
+class Solution {
+public:
+    TreeNode * inorder ( TreeNode * root , vector < int > & ans){
+        if ( root ==  NULL) return NULL ;
+        inorder ( root -> left , ans);
+        ans.push_back( root -> val );
+        inorder ( root -> right , ans );
+        return root  ;
+    }
+    int findSecondMinimumValue(TreeNode* root) {
+        vector < int > ans ;
+        inorder ( root , ans);
+        sort( ans.begin() , ans.end());
+        int first = root -> val ;
+        int second = INT_MAX;
+
+        for ( auto x : ans){
+            if ( x > first  ){
+               return x ; 
+            }
+        }
+        
+        
+        return -1 ;
+    }
+};
