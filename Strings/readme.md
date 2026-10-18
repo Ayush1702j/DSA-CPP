@@ -1,69 +1,60 @@
 # Strings in C++ — Complete Beginner's Guide
 
-A complete guide to understanding strings, solving string-based problems, and preparing for coding interviews.
+A complete guide to Strings in C++ and Data Structures & Algorithms (DSA), covering basic concepts, important operations, algorithms, and coding interview questions.
 
 ## Table of Contents
 
-1. Introduction to Strings
-2. What Is a String?
-3. Declaring and Initializing Strings
-4. Character vs String
-5. How Strings Are Stored in Memory
-6. String Input and Output
-7. String Length and Access
-8. Modifying Strings
-9. Important String Operations
-10. ASCII Values
-11. String Traversal
-12. String Comparison
-13. String Reversal
-14. Palindrome Strings
-15. Frequency Counting
-16. Anagrams
-17. Substrings and Subsequences
-18. Two-Pointer Technique
-19. Sliding Window Technique
-20. String Searching Algorithms
-21. String Sorting
-22. Important STL Functions
-23. Time Complexity
-24. Common Coding Interview Questions
-25. Practice Problems
-26. Common Mistakes
-27. Quick Revision
+1. [Introduction to Strings](#1-introduction-to-strings)
+2. [What Is a String?](#2-what-is-a-string)
+3. [Declaring and Initializing Strings](#3-declaring-and-initializing-strings)
+4. [Character vs String](#4-character-vs-string)
+5. [String Memory and Indexing](#5-string-memory-and-indexing)
+6. [String Input and Output](#6-string-input-and-output)
+7. [String Length and Access](#7-string-length-and-access)
+8. [Modifying Strings](#8-modifying-strings)
+9. [Important String Operations](#9-important-string-operations)
+10. [ASCII Values](#10-ascii-values)
+11. [String Traversal](#11-string-traversal)
+12. [String Comparison](#12-string-comparison)
+13. [String Reversal](#13-string-reversal)
+14. [Palindrome Strings](#14-palindrome-strings)
+15. [Frequency Counting](#15-frequency-counting)
+16. [Anagrams](#16-anagrams)
+17. [Substrings and Subsequences](#17-substrings-and-subsequences)
+18. [Two-Pointer Technique](#18-two-pointer-technique)
+19. [Sliding Window Technique](#19-sliding-window-technique)
+20. [String Searching Algorithms](#20-string-searching-algorithms)
+21. [String Sorting](#21-string-sorting)
+22. [Important STL Functions](#22-important-stl-functions)
+23. [Time Complexity](#23-time-complexity)
+24. [Common Coding Interview Questions](#24-common-coding-interview-questions)
+25. [Practice Problems](#25-practice-problems)
+26. [Common Mistakes](#26-common-mistakes)
+27. [Quick Revision](#27-quick-revision)
 
 ---
 
-# 1. Introduction to Strings
+## 1. Introduction to Strings
 
 A string is a sequence of characters used to represent text.
 
 Examples:
 
 ```text
-"Hello"
-"Harshal"
-"Computer Science"
-"12345"
+Hello
+Harshal
+Computer Science
 ```
 
-Strings are used in almost every programming application:
+Strings are useful for storing names, processing text, searching words, validating passwords, and solving DSA problems.
 
-- Storing names and addresses
-- Searching for words in a document
-- Checking passwords
-- Processing text
-- Detecting palindromes
-- Searching for patterns
-- Validating email addresses
-
-In Data Structures and Algorithms (DSA), string problems often involve searching, comparing, modifying, or rearranging characters.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 2. What Is a String?
+## 2. What Is a String?
 
-In C++, a string can be represented using the `string` class from the Standard Template Library (STL).
+In C++, a string is commonly represented using the `string` class.
 
 ```cpp
 #include <iostream>
@@ -85,53 +76,27 @@ Output:
 Harshal
 ```
 
-Here:
-
-- `string` is the data type.
-- `name` is the variable.
-- `"Harshal"` is the string value.
-
 A string can contain letters, numbers, spaces, and special characters.
 
-```cpp
-string a = "Hello";
-string b = "12345";
-string c = "Hello World!";
-```
-
-**Important:** A string containing digits, such as `"12345"`, is text. It is not automatically treated as an integer.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 3. Declaring and Initializing Strings
-
-There are several ways to create a string.
-
-## Method 1: Direct initialization
+## 3. Declaring and Initializing Strings
 
 ```cpp
-string s = "Hello";
+string s1 = "Hello";
+string s2 = "";
+string s3(5, 'A');
 ```
 
-## Method 2: Empty string
-
-```cpp
-string s = "";
-```
-
-An empty string contains zero characters.
-
-```cpp
-cout << s.length();
-```
-
-Output:
+Output of `s3`:
 
 ```text
-0
+AAAAA
 ```
 
-## Method 3: Assign later
+You can also declare an empty string and assign a value later.
 
 ```cpp
 string s;
@@ -139,66 +104,29 @@ string s;
 s = "Welcome";
 ```
 
-## Method 4: Using a constructor
-
-```cpp
-string s(5, 'A');
-
-cout << s;
-```
-
-Output:
-
-```text
-AAAAA
-```
-
-This creates a string containing five `A` characters.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 4. Character vs String
-
-A character and a string are different.
+## 4. Character vs String
 
 | Character | String |
 |---|---|
-| Represents one character | Represents zero or more characters |
+| One character | Sequence of characters |
 | Uses single quotes | Uses double quotes |
-| Data type: `char` | Data type: `string` |
-| Example: `'A'` | Example: `"Apple"` |
+| `char ch = 'A';` | `string s = "Apple";` |
 
-Example:
-
-```cpp
-char ch = 'A';
-
-string s = "Apple";
-```
-
-Incorrect:
-
-```cpp
-char ch = "A";
-```
-
-Correct:
-
-```cpp
-char ch = 'A';
-```
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 5. How Strings Are Stored in Memory
+## 5. String Memory and Indexing
 
 Consider:
 
 ```cpp
 string s = "CODE";
 ```
-
-Conceptually, the characters are stored in sequence:
 
 | Index | Character |
 |---|---|
@@ -207,7 +135,7 @@ Conceptually, the characters are stored in sequence:
 | 2 | D |
 | 3 | E |
 
-The first character is at index `0`, not index `1`.
+Access a character:
 
 ```cpp
 cout << s[0];
@@ -219,293 +147,113 @@ Output:
 C
 ```
 
-```cpp
-cout << s[3];
-```
-
-Output:
-
-```text
-E
-```
-
-The last character is at index:
+The last valid index is:
 
 ```cpp
 s.length() - 1
 ```
 
-For `"CODE"`:
+Remember that string indexing starts from zero.
 
-```cpp
-4 - 1 = 3
-```
-
-Therefore, the last valid index is `3`.
-
-**Important:** Accessing a string using an invalid index can cause undefined behavior. Always check the string length before accessing an index.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 6. String Input and Output
+## 6. String Input and Output
 
-## Using cin
+Using `cin`:
 
 ```cpp
 string name;
 
 cin >> name;
-
-cout << name;
 ```
 
-Input:
+`cin` stops at whitespace.
 
-```text
-Harshal Nimje
-```
-
-Output:
-
-```text
-Harshal
-```
-
-`cin` normally stops reading at whitespace.
-
-## Using getline
+Using `getline()`:
 
 ```cpp
 string name;
 
 getline(cin, name);
-
-cout << name;
 ```
 
-Input:
+`getline()` reads a complete line, including spaces.
 
-```text
-Harshal Nimje
-```
-
-Output:
-
-```text
-Harshal Nimje
-```
-
-`getline()` reads the entire line, including spaces.
-
-## Common getline mistake
-
-```cpp
-int age;
-string name;
-
-cin >> age;
-getline(cin, name);
-```
-
-The newline remaining after entering the age may be consumed by `getline()`.
-
-Correct:
-
-```cpp
-int age;
-string name;
-
-cin >> age;
-cin.ignore();
-getline(cin, name);
-```
-
-For more robust input handling:
-
-```cpp
-#include <limits>
-
-cin >> age;
-
-cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-getline(cin, name);
-```
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 7. String Length and Character Access
-
-## length()
-
-Returns the number of characters.
+## 7. String Length and Access
 
 ```cpp
 string s = "Hello";
 
 cout << s.length();
+cout << s.size();
 ```
 
-Output:
+Both return:
 
 ```text
 5
 ```
 
-`size()` also returns the number of characters.
+Access characters using:
 
 ```cpp
-cout << s.size();
+s[0]
+s[1]
+s.at(2)
 ```
 
-## Accessing characters
+`at()` performs bounds checking and throws an exception if the index is out of range.
 
-```cpp
-string s = "Hello";
-
-cout << s[0] << endl;
-cout << s[1] << endl;
-cout << s[4] << endl;
-```
-
-Output:
-
-```text
-H
-e
-o
-```
-
-## Using at()
-
-```cpp
-string s = "Hello";
-
-cout << s.at(1);
-```
-
-Output:
-
-```text
-e
-```
-
-Unlike `operator[]`, `at()` checks whether the index is valid and throws an exception if it is out of range.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 8. Modifying Strings
+## 8. Modifying Strings
 
-Strings can be modified after declaration.
-
-## Changing a character
+Change a character:
 
 ```cpp
 string s = "Hello";
 
 s[0] = 'Y';
-
-cout << s;
 ```
 
-Output:
-
-```text
-Yello
-```
-
-## Adding a character
+Add a character:
 
 ```cpp
-string s = "Hell";
-
-s.push_back('o');
-
-cout << s;
+s.push_back('!');
 ```
 
-Output:
-
-```text
-Hello
-```
-
-## Removing the last character
+Remove the last character:
 
 ```cpp
-string s = "Hello";
-
 s.pop_back();
-
-cout << s;
 ```
 
-Output:
+Do not call `pop_back()` on an empty string.
 
-```text
-Hell
-```
-
-**Note:** Do not call `pop_back()` on an empty string.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 9. Important String Operations
+## 9. Important String Operations
 
-## 9.1 Concatenation
-
-Combining two strings is called concatenation.
+### Concatenation
 
 ```cpp
 string a = "Hello";
 string b = "World";
 
 string c = a + " " + b;
-
-cout << c;
 ```
 
-Output:
-
-```text
-Hello World
-```
-
-Using `+=`:
-
-```cpp
-string s = "Hello";
-
-s += " World";
-```
-
-## 9.2 append()
-
-```cpp
-string s = "Hello";
-
-s.append(" World");
-
-cout << s;
-```
-
-Output:
-
-```text
-Hello World
-```
-
-## 9.3 substr()
-
-Extracts a substring from a string.
-
-Syntax:
-
-```cpp
-s.substr(start, length);
-```
-
-Example:
+### Substring
 
 ```cpp
 string s = "Programming";
@@ -513,31 +261,9 @@ string s = "Programming";
 cout << s.substr(0, 4);
 ```
 
-Output:
+Output: `Prog`
 
-```text
-Prog
-```
-
-Another example:
-
-```cpp
-string s = "Programming";
-
-cout << s.substr(3);
-```
-
-Output:
-
-```text
-gramming
-```
-
-If the length is omitted, the substring continues until the end.
-
-## 9.4 find()
-
-Searches for a character or substring.
+### Search
 
 ```cpp
 string s = "Hello World";
@@ -545,100 +271,53 @@ string s = "Hello World";
 cout << s.find("World");
 ```
 
-Output:
+Output: `6`
 
-```text
-6
-```
+If the pattern is not found, `find()` returns `string::npos`.
 
-If the searched text is not found, `find()` returns `string::npos`.
-
-```cpp
-if (s.find("Python") == string::npos) {
-    cout << "Not found";
-}
-```
-
-Output:
-
-```text
-Not found
-```
-
-## 9.5 erase()
-
-Removes characters from a string.
+### Erase
 
 ```cpp
 string s = "Hello World";
 
 s.erase(5, 6);
-
-cout << s;
 ```
 
-Output:
+Output: `Hello`
 
-```text
-Hello
-```
-
-Here:
-
-- Starting index: `5`
-- Number of characters removed: `6`
-
-## 9.6 insert()
-
-Inserts text at a specified index.
+### Insert
 
 ```cpp
 string s = "HelloWorld";
 
 s.insert(5, " ");
-
-cout << s;
 ```
 
-Output:
+Output: `Hello World`
 
-```text
-Hello World
-```
-
-## 9.7 replace()
-
-Replaces a section of a string.
+### Replace
 
 ```cpp
 string s = "Hello World";
 
 s.replace(6, 5, "C++");
-
-cout << s;
 ```
 
-Output:
+Output: `Hello C++`
 
-```text
-Hello C++
-```
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 10. ASCII Values
+## 10. ASCII Values
 
-ASCII assigns numerical values to common characters.
+ASCII assigns numerical values to characters.
 
-For example:
-
-| Character | ASCII value |
+| Character | ASCII |
 |---|---:|
 | A | 65 |
-| B | 66 |
 | Z | 90 |
 | a | 97 |
-| b | 98 |
 | z | 122 |
 | 0 | 48 |
 | 9 | 57 |
@@ -651,47 +330,17 @@ char ch = 'A';
 cout << int(ch);
 ```
 
-Output:
+Output: `65`
 
-```text
-65
-```
+Use `toupper()` and `tolower()` from `<cctype>` for character case conversion.
 
-Converting a lowercase letter to uppercase:
-
-```cpp
-char ch = 'a';
-
-ch = ch - 32;
-
-cout << ch;
-```
-
-Output:
-
-```text
-A
-```
-
-A safer and clearer method is:
-
-```cpp
-#include <cctype>
-
-char ch = 'a';
-
-ch = toupper(static_cast<unsigned char>(ch));
-```
-
-For actual text processing, prefer `toupper()` and `tolower()` instead of relying on ASCII arithmetic.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 11. String Traversal
+## 11. String Traversal
 
-Traversal means visiting every character of a string.
-
-## Using a for loop
+Traversal means visiting every character.
 
 ```cpp
 string s = "Hello";
@@ -709,34 +358,11 @@ H e l l o
 
 Time complexity: O(n)
 
-Space complexity: O(1)
-
-## Using a range-based loop
-
-```cpp
-string s = "Hello";
-
-for (char ch : s) {
-    cout << ch << " ";
-}
-```
-
-This is useful when you do not need the character index.
-
-## When to use indexed traversal?
-
-Use indexed traversal when:
-
-- You need the current index.
-- You need to compare neighboring characters.
-- You need to modify characters at specific positions.
-- You are using a two-pointer technique.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 12. String Comparison
-
-Strings can be compared using comparison operators.
+## 12. String Comparison
 
 ```cpp
 string a = "Apple";
@@ -747,69 +373,40 @@ if (a < b) {
 }
 ```
 
-Output:
+C++ compares strings lexicographically.
 
-```text
-Apple comes first
-```
-
-C++ compares strings lexicographically, based on character values.
-
-Important:
+Uppercase and lowercase letters are different:
 
 ```cpp
-"apple" != "Apple"
+"Apple" != "apple"
 ```
 
-Uppercase and lowercase letters are different.
-
-For case-insensitive comparison, convert both strings to the same case first.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 13. String Reversal
-
-Reversing a string means changing the order of its characters.
+## 13. String Reversal
 
 Example:
 
 ```text
-Original:  Hello
-Reversed:  olleH
+Original: Hello
+Reversed: olleH
 ```
 
-## Method 1: Using reverse()
+Using `reverse()`:
 
 ```cpp
-#include <iostream>
-#include <string>
 #include <algorithm>
-using namespace std;
 
-int main() {
-    string s = "Hello";
-
-    reverse(s.begin(), s.end());
-
-    cout << s;
-
-    return 0;
-}
-```
-
-Output:
-
-```text
-olleH
-```
-
-Time complexity: O(n)
-
-## Method 2: Using two pointers
-
-```cpp
 string s = "Hello";
 
+reverse(s.begin(), s.end());
+```
+
+Using two pointers:
+
+```cpp
 int left = 0;
 int right = s.length() - 1;
 
@@ -819,19 +416,15 @@ while (left < right) {
     left++;
     right--;
 }
-
-cout << s;
 ```
-
-The left pointer moves forward, while the right pointer moves backward.
 
 Time complexity: O(n)
 
-Extra space complexity: O(1)
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 14. Palindrome Strings
+## 14. Palindrome Strings
 
 A palindrome reads the same forward and backward.
 
@@ -843,82 +436,33 @@ level
 racecar
 ```
 
-Non-examples:
-
-```text
-hello
-apple
-```
-
-## Palindrome checking using two pointers
+Code:
 
 ```cpp
-#include <iostream>
-#include <string>
-using namespace std;
-
-int main() {
-    string s = "madam";
-
+bool isPalindrome(string s) {
     int left = 0;
     int right = s.length() - 1;
 
-    bool palindrome = true;
-
     while (left < right) {
         if (s[left] != s[right]) {
-            palindrome = false;
-            break;
+            return false;
         }
 
         left++;
         right--;
     }
 
-    if (palindrome)
-        cout << "Palindrome";
-    else
-        cout << "Not palindrome";
-
-    return 0;
+    return true;
 }
-```
-
-Output:
-
-```text
-Palindrome
 ```
 
 Time complexity: O(n)
 
-Extra space complexity: O(1)
-
-## Case-insensitive palindrome
-
-For example:
-
-```text
-Madam
-```
-
-This is a palindrome if uppercase and lowercase letters are treated as equivalent.
-
-To support that, convert the string to lowercase before checking.
-
-If spaces and punctuation should be ignored, first remove them or skip them during traversal.
-
-For example:
-
-```text
-A man, a plan, a canal: Panama
-```
-
-This is a palindrome after ignoring spaces, punctuation, and case.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 15. Frequency Counting
+## 15. Frequency Counting
 
 Frequency means counting how many times each character appears.
 
@@ -930,403 +474,164 @@ String: banana
 
 | Character | Frequency |
 |---|---:|
-| b | 1 |
 | a | 3 |
+| b | 1 |
 | n | 2 |
 
-## Using an array for lowercase letters
+For lowercase English letters:
 
 ```cpp
-#include <iostream>
-#include <string>
-using namespace std;
+int freq[26] = {0};
 
-int main() {
-    string s = "banana";
-
-    int freq[26] = {0};
-
-    for (char ch : s) {
-        freq[ch - 'a']++;
-    }
-
-    for (int i = 0; i < 26; i++) {
-        if (freq[i] > 0) {
-            cout << char('a' + i)
-                 << " : " << freq[i] << endl;
-        }
-    }
-
-    return 0;
+for (char ch : s) {
+    freq[ch - 'a']++;
 }
 ```
 
-Output:
+This indexing method assumes every character is between `a` and `z`.
 
-```text
-a : 3
-b : 1
-n : 2
-```
+Time complexity: O(n)
 
-This approach works when all characters are lowercase English letters.
-
-For uppercase letters, digits, punctuation, or other characters, use a map or an appropriately sized character-frequency structure.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 16. Anagrams
+## 16. Anagrams
 
-Two strings are anagrams if they contain the same characters with the same frequencies, but possibly in a different order.
+Two strings are anagrams if they contain the same characters with the same frequencies.
 
-Examples:
+Example:
 
 ```text
 listen
 silent
 ```
 
-These are anagrams.
-
-```text
-hello
-world
-```
-
-These are not anagrams.
-
-## Method 1: Sorting
+Method using sorting:
 
 ```cpp
-#include <iostream>
-#include <string>
-#include <algorithm>
-using namespace std;
+sort(a.begin(), a.end());
+sort(b.begin(), b.end());
 
-bool isAnagram(string a, string b) {
-    if (a.length() != b.length()) {
-        return false;
-    }
-
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-
-    return a == b;
-}
-
-int main() {
-    cout << isAnagram("listen", "silent");
-}
-```
-
-Output:
-
-```text
-1
+bool result = (a == b);
 ```
 
 Time complexity: O(n log n)
 
-## Method 2: Frequency counting
+A frequency-counting solution can achieve O(n) time for a fixed character set.
 
-For lowercase English letters, count the frequencies in the first string and subtract the frequencies in the second.
-
-Time complexity: O(n)
-
-Extra space complexity: O(1), because the frequency array has 26 entries.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 17. Substrings and Subsequences
+## 17. Substrings and Subsequences
 
-## Substring
+### Substring
 
-A substring is a continuous sequence of characters.
-
-Example:
-
-```text
-String: abcde
-```
-
-Valid substrings:
-
-```text
-abc
-bcd
-cde
-bc
-```
-
-The characters must be continuous.
-
-## Subsequences
-
-A subsequence is created by removing zero or more characters without changing the relative order of the remaining characters.
+A substring contains continuous characters.
 
 Example:
 
 ```text
 String: abcde
+Substring: bcd
 ```
 
-Valid subsequences:
+### Subsequence
+
+A subsequence preserves the relative order of characters but does not require them to be continuous.
+
+Example:
 
 ```text
-ace
-abd
-bde
-abcde
+String: abcde
+Subsequence: ace
 ```
 
-`ace` is a subsequence because the characters appear in the same order.
-
-`aec` is not a subsequence because the order is different.
-
-**Remember:**
-
-- Every substring is a subsequence.
-- Not every subsequence is a substring.
-
-## Number of substrings
-
-For a string of length `n`, the total number of non-empty substrings is:
+Number of non-empty substrings of a string of length `n`:
 
 \[
 \frac{n(n+1)}{2}
 \]
 
-For `"abc"`:
-
-```text
-a
-b
-c
-ab
-bc
-abc
-```
-
-Total: 6
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 18. Two-Pointer Technique
+## 18. Two-Pointer Technique
 
-Two pointers are useful for solving string problems efficiently.
+Two pointers are useful for:
 
-Example problems:
+- Reversing a string
+- Checking palindromes
+- Comparing characters from both ends
 
-- Reverse a string.
-- Check a palindrome.
-- Compare strings from both ends.
-- Find a pair of characters satisfying a condition.
-
-Example: Check whether a string is a palindrome.
+Example:
 
 ```cpp
-string s = "level";
-
 int left = 0;
-int right = s.size() - 1;
+int right = s.length() - 1;
 
 while (left < right) {
-    if (s[left] != s[right]) {
-        cout << "Not palindrome";
-        return 0;
-    }
+    // Process s[left] and s[right]
 
     left++;
     right--;
 }
-
-cout << "Palindrome";
-```
-
-Instead of repeatedly creating reversed strings, two pointers can solve the problem in O(n) time and O(1) extra space.
-
----
-
-# 19. Sliding Window Technique
-
-Sliding window is used when a problem asks about a continuous part of a string.
-
-Typical problems:
-
-- Longest substring without repeating characters.
-- Longest substring with at most K distinct characters.
-- Minimum window containing all required characters.
-- Counting substrings that satisfy certain conditions.
-
-Example:
-
-Find the longest substring without repeating characters.
-
-```cpp
-#include <iostream>
-#include <string>
-#include <algorithm>
-using namespace std;
-
-int longestUniqueSubstring(string s) {
-    int last[256];
-
-    fill(last, last + 256, -1);
-
-    int left = 0;
-    int best = 0;
-
-    for (int right = 0; right < s.size(); right++) {
-        unsigned char ch = s[right];
-
-        if (last[ch] >= left) {
-            left = last[ch] + 1;
-        }
-
-        last[ch] = right;
-
-        best = max(best, right - left + 1);
-    }
-
-    return best;
-}
-
-int main() {
-    cout << longestUniqueSubstring("abcabcbb");
-}
-```
-
-Output:
-
-```text
-3
-```
-
-The longest substrings without repeated characters include:
-
-```text
-abc
-bca
-cab
 ```
 
 Time complexity: O(n)
 
-Extra space complexity: O(1), for the fixed 256-entry array.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 20. String Searching Algorithms
+## 19. Sliding Window Technique
 
-String searching means finding a pattern inside a larger string.
+Sliding window processes a continuous part of a string.
 
-Example:
+Useful for:
 
-```text
-Text:    ababcabc
-Pattern: abc
-```
+- Longest substring without repeating characters
+- Longest substring with at most K distinct characters
+- Minimum window substring
 
-The pattern occurs at indices:
+The window is expanded or contracted to satisfy a condition.
 
-```text
-2
-5
-```
+Time complexity of many optimized sliding-window solutions: O(n)
 
-## 20.1 Naive string matching
+[Back to Table of Contents](#table-of-contents)
 
-Check the pattern at every possible starting position.
+---
 
-```cpp
-#include <iostream>
-#include <string>
-using namespace std;
+## 20. String Searching Algorithms
 
-int main() {
-    string text = "ababcabc";
-    string pattern = "abc";
+### Naive Search
 
-    for (int i = 0; i <= text.size() - pattern.size(); i++) {
-        int j = 0;
-
-        while (j < pattern.size() &&
-               text[i + j] == pattern[j]) {
-            j++;
-        }
-
-        if (j == pattern.size()) {
-            cout << i << " ";
-        }
-    }
-}
-```
-
-Output:
-
-```text
-2 5
-```
+Checks the pattern at every possible position.
 
 Worst-case time complexity: O(n × m)
 
-Where:
+### KMP Algorithm
 
-- `n` is the text length.
-- `m` is the pattern length.
+KMP uses the LPS (Longest Proper Prefix which is also a Suffix) array to avoid repeated comparisons.
 
-## 20.2 KMP algorithm
+Time complexity: O(n + m)
 
-Knuth-Morris-Pratt (KMP) is a more efficient pattern-searching algorithm.
-
-It uses an LPS array:
-
-**LPS = Longest Proper Prefix which is also a Suffix.**
-
-KMP avoids repeating comparisons by remembering information about the pattern.
-
-Time complexity:
-
-```text
-O(n + m)
-```
-
-KMP is useful when:
-
-- The text is large.
-- The pattern occurs many times.
-- Repeated comparisons make naive searching slow.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 21. String Sorting
-
-Sorting rearranges characters into a specific order.
-
-Example:
-
-```text
-Original: dcba
-Sorted:   abcd
-```
-
-C++:
+## 21. String Sorting
 
 ```cpp
-#include <iostream>
-#include <string>
 #include <algorithm>
-using namespace std;
 
-int main() {
-    string s = "dcba";
+string s = "dcba";
 
-    sort(s.begin(), s.end());
+sort(s.begin(), s.end());
 
-    cout << s;
-
-    return 0;
-}
+cout << s;
 ```
 
 Output:
@@ -1337,360 +642,119 @@ abcd
 
 Time complexity: O(n log n)
 
-Sorting is frequently used for:
-
-- Anagram checking
-- Grouping words
-- Finding duplicate characters
-- Comparing character distributions
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 22. Important STL Functions
+## 22. Important STL Functions
 
-| Function | Purpose | Example |
-|---|---|---|
-| `length()` | Returns string length | `s.length()` |
-| `size()` | Returns string length | `s.size()` |
-| `empty()` | Checks whether string is empty | `s.empty()` |
-| `push_back()` | Adds a character | `s.push_back('a')` |
-| `pop_back()` | Removes last character | `s.pop_back()` |
-| `append()` | Adds text | `s.append("abc")` |
-| `substr()` | Extracts substring | `s.substr(1, 3)` |
-| `find()` | Searches for text | `s.find("abc")` |
-| `erase()` | Removes text | `s.erase(2, 1)` |
-| `insert()` | Inserts text | `s.insert(2, "xy")` |
-| `replace()` | Replaces text | `s.replace(0, 2, "hi")` |
-| `reverse()` | Reverses a string | `reverse(s.begin(), s.end())` |
-| `sort()` | Sorts characters | `sort(s.begin(), s.end())` |
-| `tolower()` | Converts a character to lowercase | `tolower(ch)` |
-| `toupper()` | Converts a character to uppercase | `toupper(ch)` |
-
----
-
-# 23. Time Complexity
-
-Let `n` be the length of the string.
-
-| Operation | Typical complexity |
+| Function | Purpose |
 |---|---|
-| Access character by index | O(1) |
-| Get string length | O(1) |
-| Traverse entire string | O(n) |
-| Reverse entire string | O(n) |
+| `length()` | Get string length |
+| `empty()` | Check if string is empty |
+| `push_back()` | Add character |
+| `pop_back()` | Remove last character |
+| `substr()` | Extract substring |
+| `find()` | Search text |
+| `erase()` | Remove characters |
+| `insert()` | Insert text |
+| `replace()` | Replace text |
+| `reverse()` | Reverse characters |
+| `sort()` | Sort characters |
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+## 23. Time Complexity
+
+| Operation | Complexity |
+|---|---|
+| Character access | O(1) |
+| String traversal | O(n) |
+| Reversal | O(n) |
 | Palindrome check | O(n) |
 | Frequency counting | O(n) |
 | Anagram using sorting | O(n log n) |
-| Anagram using frequency array | O(n) |
-| Naive pattern searching | O(n × m) worst case |
-| KMP pattern searching | O(n + m) |
-| Sorting characters | O(n log n) |
+| KMP searching | O(n + m) |
 
-Note: Actual performance can depend on the specific operation, input, and implementation.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 24. Common Coding Interview Questions
+## 24. Common Coding Interview Questions
 
-## Question 1: Reverse a string
-
-Input:
-
-```text
-hello
-```
-
-Output:
-
-```text
-olleh
-```
-
-Concepts: Two pointers, `reverse()`.
-
-## Question 2: Check palindrome
-
-Input:
-
-```text
-madam
-```
-
-Output:
-
-```text
-Palindrome
-```
-
-Concepts: Two pointers.
-
-## Question 3: Count vowels
-
-Input:
-
-```text
-education
-```
-
-Output:
-
-```text
-5
-```
-
-Concepts: Traversal, condition checking.
-
-## Question 4: Count words
-
-Input:
-
-```text
-I love programming
-```
-
-Output:
-
-```text
-3
-```
-
-Concepts: String traversal, whitespace handling.
-
-## Question 5: Find the first non-repeating character
-
-Input:
-
-```text
-aabbcdde
-```
-
-Output:
-
-```text
-c
-```
-
-Concepts: Frequency counting, traversal.
-
-## Question 6: Check anagrams
-
-Input:
-
-```text
-listen
-silent
-```
-
-Output:
-
-```text
-Anagrams
-```
-
-Concepts: Sorting, frequency arrays.
-
-## Question 7: Remove duplicate characters
-
-Input:
-
-```text
-programming
-```
-
-Output:
-
-```text
-progamin
-```
-
-Concepts: Frequency counting, preserving order.
-
-## Question 8: Find the longest word
-
-Input:
-
-```text
-I love computer programming
-```
-
-Output:
-
-```text
-programming
-```
-
-Concepts: Word boundaries, length comparison.
-
-## Question 9: Find a substring
-
-Input:
-
-```text
-Text: abcdef
-Pattern: cd
-```
-
-Output:
-
-```text
-Found at index 2
-```
-
-Concepts: Pattern searching.
-
-## Question 10: Longest substring without repeating characters
-
-Input:
-
-```text
-abcabcbb
-```
-
-Output:
-
-```text
-3
-```
-
-Concepts: Sliding window, last-seen positions.
-
----
-
-# 25. Practice Problems
-
-Try solving these problems in order.
-
-## Beginner Level
-
-1. Print every character of a string on a new line.
-2. Find the length of a string without using `length()`.
+1. Reverse a string.
+2. Check whether a string is a palindrome.
 3. Count vowels and consonants.
-4. Convert lowercase characters to uppercase.
-5. Reverse a string.
-6. Check whether a string is a palindrome.
-7. Count the number of spaces in a string.
-8. Count the number of digits in a string.
-9. Find the largest and smallest character.
-10. Remove all spaces from a string.
+4. Check whether two strings are anagrams.
+5. Find the first non-repeating character.
+6. Remove duplicate characters.
+7. Find the longest word in a sentence.
+8. Find all occurrences of a pattern.
+9. Find the longest common prefix.
+10. Find the longest substring without repeating characters.
 
-## Intermediate Level
-
-1. Check whether two strings are anagrams.
-2. Find the first repeating character.
-3. Find the first non-repeating character.
-4. Remove duplicate characters.
-5. Find the frequency of each character.
-6. Find the longest word in a sentence.
-7. Find all occurrences of a pattern.
-8. Find the longest common prefix.
-9. Reverse every word in a sentence.
-10. Check whether one string is a rotation of another.
-
-## Advanced Level
-
-1. Longest substring without repeating characters.
-2. Longest palindromic substring.
-3. Minimum window substring.
-4. Implement the KMP algorithm.
-5. Implement the Rabin-Karp algorithm.
-6. Group anagrams.
-7. Edit distance between two strings.
-8. Longest common subsequence.
-9. Wildcard pattern matching.
-10. Regular expression matching.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 26. Common Mistakes
+## 25. Practice Problems
 
-## Mistake 1: Using the wrong index
+### Beginner
 
-Incorrect:
+- Print each character of a string.
+- Find string length without using `length()`.
+- Count vowels.
+- Reverse a string.
+- Check palindrome.
+- Count spaces and digits.
 
-```cpp
-for (int i = 0; i <= s.length(); i++) {
-    cout << s[i];
-}
-```
+### Intermediate
 
-Correct:
+- Check anagrams.
+- Find the first repeating character.
+- Remove duplicates.
+- Find the longest word.
+- Find all occurrences of a pattern.
 
-```cpp
-for (int i = 0; i < s.length(); i++) {
-    cout << s[i];
-}
-```
+### Advanced
 
-The last valid index is `length() - 1`.
+- Longest palindromic substring.
+- Minimum window substring.
+- Implement KMP.
+- Edit distance.
+- Longest common subsequence.
 
-## Mistake 2: Confusing character and string
-
-Incorrect:
-
-```cpp
-char ch = "a";
-```
-
-Correct:
-
-```cpp
-char ch = 'a';
-```
-
-## Mistake 3: Using cin for a complete sentence
-
-If a string contains spaces, use `getline()`.
-
-## Mistake 4: Forgetting uppercase and lowercase
-
-```text
-Apple
-apple
-```
-
-These strings are different unless you explicitly perform case-insensitive comparison.
-
-## Mistake 5: Using ASCII indexing incorrectly
-
-This is appropriate only for lowercase letters:
-
-```cpp
-freq[ch - 'a']++;
-```
-
-Do not use it directly for uppercase letters, digits, or punctuation.
-
-## Mistake 6: Calling pop_back on an empty string
-
-Always verify that the string is not empty before removing its last character.
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
-# 27. Quick Revision
+## 26. Common Mistakes
 
-Remember these important points:
+- Using `i <= s.length()` instead of `i < s.length()`.
+- Confusing single quotes and double quotes.
+- Using `cin` for a sentence with spaces.
+- Forgetting case sensitivity.
+- Using `freq[ch - 'a']` for arbitrary characters.
+- Calling `pop_back()` on an empty string.
+- Accessing an invalid index.
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+## 27. Quick Revision
 
 - A string is a sequence of characters.
-- C++ strings use the `string` class.
-- String indexing starts from `0`.
-- The last valid index is `length() - 1`.
-- Use `getline()` to read a sentence containing spaces.
-- Use `substr()` to extract a substring.
-- Use `find()` to search for a pattern.
-- Use two pointers for palindrome and reversal problems.
-- Use frequency counting for anagrams and duplicate characters.
-- Use sliding window for substring problems involving continuous characters.
-- Use KMP for efficient pattern matching.
+- Indexing starts at zero.
+- Last valid index = `length() - 1`.
+- Use `getline()` for complete sentences.
+- Use `substr()` to extract text.
+- Use `find()` to search.
+- Use two pointers for reversal and palindrome checking.
+- Use frequency counting for anagrams and duplicates.
+- Use sliding window for substring problems.
+- Use KMP for efficient pattern searching.
 
-## Final Advice for Beginners
-
-When solving a string problem:
-
-1. Understand what the input represents.
-2. Identify whether the question involves characters, words, substrings, or subsequences.
-3. Check whether case, spaces, and punctuation matter.
-4. Start with a simple brute-force solution.
-5. Analyze its time and space complexity.
-6. Optimize using two pointers, frequency counting, sliding window, or an efficient searching algorithm.
-
-**The best way to master strings is to write the code yourself, test it with different inputs, and understand why each step works.**
+[Back to Table of Contents](#table-of-contents)
