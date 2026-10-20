@@ -1,4 +1,4 @@
-# Strings in C++ — Complete Beginner's Guide
+# Strings in C++ — Complete Beginner's Guid
 
 A complete guide to Strings in C++ and Data Structures & Algorithms (DSA), covering basic concepts, important operations, algorithms, and coding interview questions.
 
